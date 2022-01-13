@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -21,7 +21,6 @@
                 android:layout_marginTop="4dp"
                 android:padding="5dp"
                 android:text="@string/title"
-                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +47,6 @@
                 android:text="@string/forgot_password"
                 android:layout_marginBottom="8dp"
                 android:textSize="15sp"
-                android:textColor="@color/black"
                 android:maxLines="3"
                 android:ellipsize="end"
                 app:layout_constraintTop_toBottomOf="@id/note_title"

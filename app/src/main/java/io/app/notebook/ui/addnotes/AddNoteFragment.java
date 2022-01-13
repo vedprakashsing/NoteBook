@@ -14,6 +14,8 @@ import io.app.notebook.data.Data;
 import io.app.notebook.data.NoteEntity;
 import io.app.notebook.databinding.FragmentAddNoteBinding;
 
+
+// TODO replace by Bottom Sheet Dialog if possible
 public class AddNoteFragment extends Fragment {
     private FragmentAddNoteBinding binding;
 
