@@ -98,7 +98,7 @@ public class SignUpFragment extends Fragment {
         Log.d(TAG, "addNewUser: user inserted in database");
 
         // Now move to StartingFragment
-        getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,StartFragment.class,null).addToBackStack("null").commit();
+        getParentFragmentManager().popBackStack();
     }
 
     public boolean checkPassword() {
