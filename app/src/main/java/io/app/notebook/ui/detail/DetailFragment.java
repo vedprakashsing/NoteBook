@@ -1,4 +1,4 @@
-package io.app.notebook.detail;
+package io.app.notebook.ui.detail;
 
 import android.os.Bundle;
 

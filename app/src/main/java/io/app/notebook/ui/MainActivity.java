@@ -1,10 +1,11 @@
-package io.app.notebook;
+package io.app.notebook.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.os.Bundle;
 
+import io.app.notebook.R;
 import io.app.notebook.data.AppDatabase;
 import io.app.notebook.data.Data;
 

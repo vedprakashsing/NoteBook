@@ -1,4 +1,4 @@
-package io.app.notebook;
+package io.app.notebook.ui.authentication;
 
 import android.os.Bundle;
 
@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import io.app.notebook.ui.home.HomeScreenFragment;
+import io.app.notebook.util.EncryptDecrypt;
+import io.app.notebook.R;
 import io.app.notebook.data.Data;
 import io.app.notebook.databinding.FragmentLoginBinding;
-import io.app.notebook.home.HomeScreenFragment;
 
 public class LoginFragment extends Fragment {
     private static final String TAG = "LoginFragment";
@@ -55,6 +57,7 @@ public class LoginFragment extends Fragment {
                 Data.getInstance().uid = uid;
                 // Now navigate to Home, no need to add this screen to the back stack
                 getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, HomeScreenFragment.class, null).commit();
+                Toast.makeText(getContext(), "Successfully logged in!", Toast.LENGTH_SHORT).show();
             }
         });
     }

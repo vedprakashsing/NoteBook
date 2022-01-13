@@ -1,4 +1,4 @@
-package io.app.notebook;
+package io.app.notebook.util;
 
 import static android.content.ContentValues.TAG;
 

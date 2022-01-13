@@ -1,4 +1,4 @@
-package io.app.notebook;
+package io.app.notebook.ui;
 
 import android.os.Bundle;
 
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import io.app.notebook.R;
+import io.app.notebook.ui.authentication.LoginFragment;
+import io.app.notebook.ui.authentication.SignUpFragment;
 import io.app.notebook.databinding.FragmentStartFragementBinding;
 
 
@@ -31,14 +34,14 @@ public class StartFragment extends Fragment {
         binding.startSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,LoginFragment.class,null).addToBackStack("null").commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, LoginFragment.class,null).addToBackStack("null").commit();
             }
         });
 
         binding.startSingUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,SignUpFragment.class,null).addToBackStack("null").commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, SignUpFragment.class,null).addToBackStack("null").commit();
             }
         });
         return view;

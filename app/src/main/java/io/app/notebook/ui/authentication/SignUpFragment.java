@@ -1,4 +1,4 @@
-package io.app.notebook;
+package io.app.notebook.ui.authentication;
 
 import static android.content.ContentValues.TAG;
 
@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
+import io.app.notebook.util.EncryptDecrypt;
 import io.app.notebook.data.Data;
 import io.app.notebook.data.UserEntity;
 import io.app.notebook.databinding.FragmentSignUpBinding;
@@ -98,6 +99,7 @@ public class SignUpFragment extends Fragment {
         Log.d(TAG, "addNewUser: user inserted in database");
 
         // Now move to StartingFragment
+        Toast.makeText(getContext(), "Welcome to Notebook!", Toast.LENGTH_SHORT).show();
         getParentFragmentManager().popBackStack();
     }
 

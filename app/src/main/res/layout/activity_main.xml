@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="io.app.notebook.StartFragment"
+        android:name="io.app.notebook.ui.StartFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

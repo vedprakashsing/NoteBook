@@ -7,11 +7,11 @@ import androidx.room.PrimaryKey;
 public class NoteEntity {
     private String title;
     private String description;
-    private String userId;
+    private long userId;
     @PrimaryKey(autoGenerate = true
     ) private int id;
 
-    public NoteEntity(String title, String description, String userId, int id) {
+    public NoteEntity(String title, String description, long userId, int id) {
         this.title = title;
         this.description = description;
         this.userId = userId;
@@ -34,11 +34,11 @@ public class NoteEntity {
         this.description = description;
     }
 
-    public String getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
