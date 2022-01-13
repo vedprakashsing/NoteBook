@@ -7,15 +7,14 @@ import androidx.room.ForeignKey;
 public class NoteEntity {
     private String title;
     private String Description;
-    private String Phone;
-    private String noteId;
+    private String userId;
     private int id;
 
-    public NoteEntity(String title, String description, String phone,int id) {
+    public NoteEntity(String title, String description, String userId, int id) {
         this.title = title;
         Description = description;
-        Phone = phone;
-        noteId=phone+id;
+        this.userId = userId;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -34,11 +33,19 @@ public class NoteEntity {
         Description = description;
     }
 
-    public String getPhone() {
-        return Phone;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setPhone(String phone) {
-        Phone = phone;
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
