@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Initialize the database instance and store it in a singleton
-        Data.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "notebook-db").build();
+        Data.getInstance().db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "notebook-db")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
     }
 }

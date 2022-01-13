@@ -1,17 +1,19 @@
 package io.app.notebook.data;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "notes")
 public class NoteEntity {
     private String title;
-    private String Description;
+    private String description;
     private String userId;
-    private int id;
+    @PrimaryKey(autoGenerate = true
+    ) private int id;
 
     public NoteEntity(String title, String description, String userId, int id) {
         this.title = title;
-        Description = description;
+        this.description = description;
         this.userId = userId;
         this.id = id;
     }
@@ -25,11 +27,11 @@ public class NoteEntity {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getUserId() {
