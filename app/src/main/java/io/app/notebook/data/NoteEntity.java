@@ -1,7 +1,6 @@
-package io.app.notebook.room;
+package io.app.notebook.data;
 
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 
 @Entity(tableName = "notes")
 public class NoteEntity {
