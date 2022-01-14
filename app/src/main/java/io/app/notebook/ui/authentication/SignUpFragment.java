@@ -1,29 +1,22 @@
-package io.app.notebook;
+package io.app.notebook.ui.authentication;
 
 import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
+import androidx.fragment.app.Fragment;
+
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
-
+import io.app.notebook.util.EncryptDecrypt;
+import io.app.notebook.data.Data;
+import io.app.notebook.data.UserEntity;
 import io.app.notebook.databinding.FragmentSignUpBinding;
 
 
@@ -36,7 +29,7 @@ public class SignUpFragment extends Fragment {
     private String confirmPassword;
     private String phone;
     private String firstName;
-    private byte[] encryptPassword;
+    private byte[] encryptedPassword;
 
 
     public SignUpFragment() {
@@ -79,16 +72,35 @@ public class SignUpFragment extends Fragment {
                 } else if (confirmPassword.isEmpty() == false && (password.equals(confirmPassword) == false)) {
                     Toast.makeText(getContext(), "Password does not matches.", Toast.LENGTH_SHORT).show();
                 } else {
-                   // String encryptedPassword = encrypted();
-                    EncryptDecrypt encrypt=new EncryptDecrypt();
-                    encryptPassword=encrypt.encrypted(password);
-                    Log.d(TAG, "onClick: "+encrypt.decrypted(encryptPassword));
-                    // writeNewUser(name, email, phone, password);
+                    // String encryptedPassword = encrypted();
+                    EncryptDecrypt encrypt = new EncryptDecrypt();
+                    encryptedPassword = encrypt.encrypted(password);
+                    Log.d(TAG, "onClick, Plaintext password: " + password + "; Encrypted password: " + Arrays.toString(encryptedPassword));
+                    addNewUser(name, phone, email, encryptedPassword);
                 }
 
             }
         });
         return view;
+    }
+
+    // Adds a new user to the database, and moves to the StartingFragment
+    private void addNewUser(String name, String phone, String email, byte[] encryptedPassword) {
+        // Use Room instance from Data singleton class
+        Data.getInstance().db.userDAO().insertUser(
+                new UserEntity(
+                        0,
+                        name,
+                        phone,
+                        encryptedPassword,
+                        email
+                )
+        );
+        Log.d(TAG, "addNewUser: user inserted in database");
+
+        // Now move to StartingFragment
+        Toast.makeText(getContext(), "Welcome to Notebook!", Toast.LENGTH_SHORT).show();
+        getParentFragmentManager().popBackStack();
     }
 
     public boolean checkPassword() {
@@ -101,19 +113,19 @@ public class SignUpFragment extends Fragment {
             i++;
         }
         Log.d(TAG, "checkPassword: " + firstName);
-         //Log.d(TAG, "checkPassword: "+isWordPresent(password,firstName));
-        if ((password.toLowerCase()).contains(firstName.toLowerCase())){
+        //Log.d(TAG, "checkPassword: "+isWordPresent(password,firstName));
+        if ((password.toLowerCase()).contains(firstName.toLowerCase())) {
             Toast.makeText(getContext(), "Name is not allowed" + name, Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "checkPassword: "+"HogyaAA");
+            Log.d(TAG, "checkPassword: " + "HogyaAA");
             firstName = null;
             return false;
         } else if (!count()) {
-            Log.d(TAG, "checkPassword: "+"nahihua");
+            Log.d(TAG, "checkPassword: " + "nahihua");
             firstName = null;
             return false;
         } else {
-            Log.d(TAG, "checkPassword: "+"Ekahhua");
-            firstName=null;
+            Log.d(TAG, "checkPassword: " + "Ekahhua");
+            firstName = null;
             return true;
         }
     }
@@ -155,9 +167,6 @@ public class SignUpFragment extends Fragment {
             return true;
         }
     }
-
-
-
 
 
 }
